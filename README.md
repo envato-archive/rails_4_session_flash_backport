@@ -1,7 +1,8 @@
 # Rails4SessionFlashBackport
 
 Different versions of Rails have stored flash messages in different objects in
-the session, making it a pain to upgrade without nuking everyones session.
+the session, making it a pain to upgrade without nuking everyones session. The
+good ol' `ActionDispatch::Session::SessionRestoreError` making life difficult.
 
 This gem was created because we wanted to be able to keep our users Rails 2
 sessions working on Rails 3, and we figured as long as we're going to be doing
