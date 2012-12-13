@@ -1,7 +1,7 @@
 require 'action_controller'
 require 'rails_4_session_flash_backport/rails2'
 
-describe ActionController::Flash::FlashHash, "monkey patches" do
+describe ActionController::Flash::FlashHash, "hax" do
 
   let(:rails_2_marshaled) { "\x04\bIC:'ActionController::Flash::FlashHash{\a:\vnoticeI\"\x11I'm a notice\x06:\x06ET:\nerrorI\"\x11I'm an error\x06;\aT\x06:\n@used{\a;\x06T;\bF" }
   let(:rails_3_marshaled) { "\x04\bo:%ActionDispatch::Flash::FlashHash\t:\n@usedo:\bSet\x06:\n@hash{\x06:\vnoticeT:\f@closedF:\r@flashes{\a;\tI\"\x11I'm a notice\x06:\x06EF:\nerrorI\"\x11I'm an error\x06;\fF:\t@now0" }

@@ -4,15 +4,12 @@ require 'rails_4_session_flash_backport/rails3'
 describe ActionDispatch::Flash::FlashHash, "hax" do
 
   let(:rails_2_marshaled) { "\x04\bIC:'ActionController::Flash::FlashHash{\a:\vnoticeI\"\x11I'm a notice\x06:\x06ET:\nerrorI\"\x11I'm an error\x06;\aT\x06:\n@used{\a;\x06T;\bF" }
+  let(:rails_3_marshaled) { "\x04\bo:%ActionDispatch::Flash::FlashHash\t:\n@usedo:\bSet\x06:\n@hash{\x06:\vnoticeT:\f@closedF:\r@flashes{\a;\tI\"\x11I'm a notice\x06:\x06EF:\nerrorI\"\x11I'm an error\x06;\fF:\t@now0" }
+  let(:rails_2_vanilla)   { Marshal.load(rails_2_marshaled) }
+  let(:rails_3_vanilla)   { Marshal.load(rails_3_marshaled) }
+  let(:rails_4_style)     { {'flashes' => {:notice => "I'm a notice", :error => "I'm an error"}, 'discard' => [:notice]} }
+  let(:rails_2_marshaled) { "\x04\bIC:'ActionController::Flash::FlashHash{\a:\vnoticeI\"\x11I'm a notice\x06:\x06ET:\nerrorI\"\x11I'm an error\x06;\aT\x06:\n@used{\a;\x06T;\bF" }
   let(:rails_2_vanilla) { Marshal.load(rails_2_marshaled) }
-
-  let(:rails_3_vanilla) { described_class.new.tap do |hash|
-    hash[:notice] = "I'm a notice"
-    hash.sweep
-    hash[:error] = "I'm an error"
-  end }
-
-  let(:rails_4_style) { {'flashes' => {:notice => "I'm a notice", :error => "I'm an error"}, 'discard' => [:notice]} }
 
   it "happily unmarshals a Rails 2 session without exploding" do
     Marshal.load(rails_2_marshaled).should be_a(ActionController::Flash::FlashHash)
