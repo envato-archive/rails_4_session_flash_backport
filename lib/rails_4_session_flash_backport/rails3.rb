@@ -4,24 +4,23 @@ require 'action_dispatch/middleware/flash'
 module ActionDispatch
   class Request < Rack::Request
     def flash
-      @env[Flash::KEY] ||= Flash::FlashHash.from_session_value(session["flash"])
+      @env[Flash::KEY] ||= Flash::FlashHash.from_session_value(session["flash"]).tap(&:sweep)
     end
   end
   class Flash
     class FlashHash
 
       def self.from_session_value(value)
-        flash = case value
-                when ::ActionController::Flash::FlashHash # Rails 2.x
-                  new
-                when ::ActionDispatch::Flash::FlashHash # Rails 3.1, 3.2
-                  new(value.instance_variable_get(:@flashes), value.instance_variable_get(:@used))
-                when Hash # Rails 4.0, we backported to 2.3 too
-                  new(value['flashes'], value['discard'])
-                else
-                  new
-                end
-        flash.tap(&:sweep)
+        case value
+        when ::ActionController::Flash::FlashHash # Rails 2.x
+          new(value, value.instance_variable_get(:@used).select{|a,b| b}.keys)
+        when ::ActionDispatch::Flash::FlashHash # Rails 3.1, 3.2
+          new(value.instance_variable_get(:@flashes), value.instance_variable_get(:@used))
+        when Hash # Rails 4.0, we backported to 2.3 too
+          new(value['flashes'], value['discard'])
+        else
+          new
+        end
       end
 
       def to_session_value
@@ -62,7 +61,7 @@ module ActionDispatch
   end
 end
 
-# This magic here allows us to unmarshal the old Rails 2.x ActionController::Flash::FlashHash as just an empty hash
+# This magic here allows us to unmarshal the old Rails 2.x ActionController::Flash::FlashHash
 module ActionController
   module Flash
     class FlashHash < Hash
