@@ -56,7 +56,7 @@ module ActionController #:nodoc:
   end
 end
 
-# This magic here allows us to unmarshal a Rails 3.2 ActionDispatch::Flash::FlashHash as just a hash
+# This magic here allows us to unmarshal a Rails 3.2 ActionDispatch::Flash::FlashHash
 module ActionDispatch
   class Flash
     class FlashHash
