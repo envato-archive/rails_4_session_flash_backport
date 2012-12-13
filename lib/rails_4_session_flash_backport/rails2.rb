@@ -9,16 +9,17 @@ module ActionController #:nodoc:
         flash = case value
                 when FlashHash # Rails 2.3
                   value
+                when ::ActionDispatch::Flash::FlashHash
+                  flashes = value.instance_variable_get(:@flashes) || {}
+                  used_set = value.instance_variable_get(:@used) || []
+                  used = Hash[flashes.keys.map{|k| [k, used_set.include?(k)] }]
+                  new_from_values(flashes, used)
                 when Hash # Rails 4.0
-                  new.tap do |flash_hash|
-                    flashes = value['flashes'] || {}
-                    discard = value['discard']
-                    used = Hash[flashes.keys.map{|k| [k, discard.include?(k)] }]
-                    flashes.each do |k, v|
-                      flash_hash[k] = v
-                    end
-                    flash_hash.instance_variable_set("@used", used)
-                  end
+                  flashes = value['flashes'] || {}
+                  discard = value['discard']
+                  used = Hash[flashes.keys.map{|k| [k, discard.include?(k)] }]
+
+                  new_from_values(flashes, used)
                 else
                   new
                 end
@@ -33,6 +34,17 @@ module ActionController #:nodoc:
 
       def store(session, key = "flash")
         session[key] = to_session_value
+      end
+
+      private
+
+      def self.new_from_values(flashes, used)
+        new.tap do |flash_hash|
+          flashes.each do |k, v|
+            flash_hash[k] = v
+          end
+          flash_hash.instance_variable_set("@used", used)
+        end
       end
     end
 
