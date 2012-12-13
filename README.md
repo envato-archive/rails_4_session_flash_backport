@@ -36,14 +36,8 @@ Or install it yourself as:
 
     $ gem install rails_4_session_flash_backport
 
-## Usage
+Copyright
+---------
 
-Add it to your Gemfile.
+Copyright (c) 2012 [Envato](http://envato.com), [Lucas Parry](http://github.com/lparry), [chendo](http://github.com/chendo). See LICENSE.txt for further details.
 
-## Contributing
-
-1. Fork it
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request

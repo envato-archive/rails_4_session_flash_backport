@@ -1,4 +1,4 @@
-Copyright (c) 2012 Lucas Parry
+Copyright (c) 2012 Envat, Lucas Parry, Jack Chen (chendo)
 
 MIT License
 
