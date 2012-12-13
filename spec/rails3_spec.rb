@@ -26,11 +26,11 @@ describe ActionDispatch::Flash::FlashHash, "hax" do
     end
 
     it "decodes rails 2 style to an empty FlashHash" do
-      this_is_the_flash_hash_were_looking_for = ActionDispatch::Flash::FlashHash.from_session_value(rails_2_vanilla)
+      this_is_the_flash_hash_were_looking_for ActionDispatch::Flash::FlashHash.from_session_value(rails_2_vanilla)
     end
 
     it "decodes rails 3 style to a FlashHash" do
-      this_is_the_flash_hash_were_looking_for = ActionDispatch::Flash::FlashHash.from_session_value(rails_3_vanilla)
+      this_is_the_flash_hash_were_looking_for ActionDispatch::Flash::FlashHash.from_session_value(rails_3_vanilla)
     end
 
     it "decodes rails 4 style to a FlashHash" do
