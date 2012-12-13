@@ -11,8 +11,9 @@ module ActionController #:nodoc:
                   value
                 when Hash # Rails 4.0
                   new.tap do |flash_hash|
-                    used    = value['used']    || {}
                     flashes = value['flashes'] || {}
+                    discard = value['discard']
+                    used = Hash[flashes.keys.map{|k| [k, discard.include?(k)] }]
                     flashes.each do |k, v|
                       flash_hash[k] = v
                     end
@@ -27,7 +28,7 @@ module ActionController #:nodoc:
       def to_session_value
         return nil if empty?
         rails_3_discard_list = @used.map{|k,v| k if v}.compact
-        {'discard' => rails_3_discard_list, 'flashes' => Hash[to_a], 'used' => @used}
+        {'discard' => rails_3_discard_list, 'flashes' => Hash[to_a]}
       end
 
       def store(session, key = "flash")
