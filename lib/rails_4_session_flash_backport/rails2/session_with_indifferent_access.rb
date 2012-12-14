@@ -12,22 +12,16 @@ module ActionController::Session
     class SessionHash < Hash
         def [](key)
           load! unless @loaded
-          require 'pry'
-          binding.pry if key == :session_id
           super(key.to_s) || super(key)
         end
 
         def has_key?(key)
           load! unless @loaded
-          require 'pry'
-          binding.pry if key == :session_id
           super(key.to_s) || super(key)
         end
 
         def []=(key, value)
           load! unless @loaded
-          require 'pry'
-          binding.pry if key == :session_id
           super(key.to_s, value)
         end
     end
