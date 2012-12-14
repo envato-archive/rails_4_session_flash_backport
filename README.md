@@ -16,6 +16,11 @@ When using this gem on a Rails 2 or 3 app:
  - Flash messages in the Rails 3 format can be successfully decoded.
  - Flash messages in the Rails 4 format can be successfully decoded.
 
+Additionally, on Rails 2 we include some patches for the SessionHash and
+CookieStore, in order to make them act more like their
+HashWithIndifferentAccess versions on Rails 3, so that your session_id can
+survive a trip to Rails 3 and back.
+
 This actually makes it possible to bounce requests from a Rails 2 server, to a
 Rails 3 server and back again so long as both servers are using this gem. Very
 helpful when you're doing a big Rails 2 => 3 upgrade and want to run a few
