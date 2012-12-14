@@ -9,7 +9,7 @@ module ActionController #:nodoc:
         flash = case value
                 when FlashHash # Rails 2.3
                   value
-                when ::ActionDispatch::Flash::FlashHash
+                when ::ActionDispatch::Flash::FlashHash # Rails 3.2
                   flashes = value.instance_variable_get(:@flashes) || {}
                   used_set = value.instance_variable_get(:@used) || []
                   used = Hash[flashes.keys.map{|k| [k, used_set.include?(k)] }]
