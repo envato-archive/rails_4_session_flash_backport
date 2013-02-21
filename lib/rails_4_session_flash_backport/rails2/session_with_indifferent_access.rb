@@ -1,4 +1,4 @@
-# The SessionHash is a HashWithIndifferentAccess on Rails 3, which causes
+# The SessionHash acts like a HashWithIndifferentAccess on Rails 3, which causes
 # problems with the session_id among other things. On Rails 2 the session_id is
 # stored as session[:session_id], if we take that session to Rails 3 it becomes
 # session["session_id"], and if we bring it back to Rails 2 it's still
