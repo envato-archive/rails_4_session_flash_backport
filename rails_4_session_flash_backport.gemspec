@@ -10,7 +10,7 @@ Gem::Specification.new do |gem|
   gem.email         = ["lparry@gmail.com"]
   gem.description   = %q{Store flash in the session in Rails 4 style on Rails 2/3}
   gem.summary       = %q{Backport of the way Rails 4 stores flash messages in the session to Rails 2 & 3, so you can safely take a session betweens Rails versions without things exploding.}
-  gem.homepage      = ""
+  gem.homepage      = "https://github.com/envato/rails_4_session_flash_backport"
 
   gem.files         = `git ls-files`.split($/)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
