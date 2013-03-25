@@ -9,6 +9,9 @@ sessions working on Rails 3, and we figured as long as we're going to be doing
 crazy stuff we might as well go and use the far more sensible practice from
 Rails 4 of storing the flash as basic ruby types.
 
+For more details of the how and why, check out our blog post 
+[Happily upgrading Ruby on Rails at production scale](http://webuild.envato.com/blog/upgrading-ruby-on-rails-at-production-scale/)
+
 When using this gem on a Rails 2 or 3 app:
 
  - Flash messages are stored as basic objects in the Rails 4 style.
