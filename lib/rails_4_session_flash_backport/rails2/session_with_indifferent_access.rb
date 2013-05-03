@@ -24,6 +24,12 @@ module ActionController::Session
           load! unless @loaded
           super(key.to_s, value)
         end
+
+        def delete(key)
+          value        = super(key)
+          string_value = super(key.to_s)
+          value || string_value
+        end
     end
   end
 end
