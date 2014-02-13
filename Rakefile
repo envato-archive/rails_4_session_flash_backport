@@ -17,3 +17,5 @@ namespace :spec do
 end
 
 task :spec => ["spec:rails2", "spec:rails3"]
+
+task :default => :spec
