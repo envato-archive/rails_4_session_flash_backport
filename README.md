@@ -31,6 +31,8 @@ Rails 3 servers concurrently with your Rails 2 cluster to verify everything is
 fine and performance is acceptable without
 having to do the all-in switch.
 
+## Status [![Build Status](https://travis-ci.org/envato/rails_4_session_flash_backport.png?branch=travis_ci)](https://travis-ci.org/envato/rails_4_session_flash_backport)
+
 ## Installation
 
 Add this line to your application's Gemfile:
