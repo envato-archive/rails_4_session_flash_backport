@@ -4,6 +4,7 @@ source 'https://rubygems.org'
 gemspec
 
 group :development do
+  gem 'rake'
   gem "rspec"
   gem "actionpack", ENV["ACTIONPACK_VERSION"] || "3.2.9"
   gem "pry"
