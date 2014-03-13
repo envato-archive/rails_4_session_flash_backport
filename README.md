@@ -1,4 +1,6 @@
 # Rails4SessionFlashBackport
+[![Gem Version](https://badge.fury.io/rb/rails_4_session_flash_backport.png)](http://badge.fury.io/rb/rails_4_session_flash_backport)
+[![Build Status](https://travis-ci.org/envato/rails_4_session_flash_backport.png)](https://travis-ci.org/envato/rails_4_session_flash_backport)
 
 Different versions of Rails have stored flash messages in different objects in
 the session, making it a pain to upgrade without nuking everyones session. The
@@ -30,8 +32,6 @@ helpful when you're doing a big Rails 2 => 3 upgrade and want to run a few
 Rails 3 servers concurrently with your Rails 2 cluster to verify everything is
 fine and performance is acceptable without
 having to do the all-in switch.
-
-## Status [![Build Status](https://travis-ci.org/envato/rails_4_session_flash_backport.png?branch=travis_ci)](https://travis-ci.org/envato/rails_4_session_flash_backport)
 
 ## Installation
 
