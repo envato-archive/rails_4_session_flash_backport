@@ -33,6 +33,9 @@ Rails 3 servers concurrently with your Rails 2 cluster to verify everything is
 fine and performance is acceptable without
 having to do the all-in switch.
 
+_Please Note_ this gem is not intended to be loaded in Rails 4. If you're using
+Rails 4, you've already got all of this gem's functionality!
+
 ## Installation
 
 Add this line to your application's Gemfile:
