@@ -26,8 +26,21 @@ namespace :spec do
         fail
     end
   end
+
+  task :rails4 do
+    Bundler.with_clean_env do
+      ENV["BUNDLE_GEMFILE"] = File.expand_path("../gemfiles/Gemfile.rails4", __FILE__)
+
+      system "bundle", "check" or
+        system "bundle" or
+        raise "Couldn't install bundle from gemfiles/Gemfile.rails4"
+
+      system "bundle", "exec", "rspec", "--color", "spec/rails4" or
+        fail
+    end
+  end
 end
 
-task :spec => ["spec:rails2", "spec:rails3"]
+task :spec => ["spec:rails2", "spec:rails3", "spec:rails4"]
 
 task :default => :spec
