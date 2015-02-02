@@ -1,8 +1,8 @@
 require 'base64'
-require 'action_controller'
-require 'rails_4_session_flash_backport/rails2/flash_hash'
 
-describe ActionController::Flash::FlashHash, "backport" do
+require 'rails_4_session_flash_backport/rails4/flash_hash'
+
+describe ActionDispatch::Flash::FlashHash, "backport" do
   context "#from_session_value" do
     subject(:flash) { described_class.from_session_value(value) }
 
@@ -11,7 +11,7 @@ describe ActionController::Flash::FlashHash, "backport" do
         let(:value) { {"flashes" => {"greeting" => "Hello"}} }
 
         it "is the expected flash" do
-          expect(flash).to eq("greeting" => "Hello")
+          expect(flash.to_hash).to eq("greeting" => "Hello")
         end
       end
 
@@ -19,7 +19,7 @@ describe ActionController::Flash::FlashHash, "backport" do
         let(:value) { {"flashes" => {"greeting" => "Hello", "farewell" => "Goodbye"}, "discard" => ["farewell"]} }
 
         it "is the expected flash" do
-          expect(flash).to eq("greeting" => "Hello")
+          expect(flash.to_hash).to eq("greeting" => "Hello")
         end
       end
     end
@@ -31,7 +31,7 @@ describe ActionController::Flash::FlashHash, "backport" do
       let(:value) { session["flash"] }
 
       it "is the expected flash" do
-        expect(flash).to eq("greeting" => "Hello")
+        expect(flash.to_hash).to eq("greeting" => "Hello")
       end
     end
 
@@ -42,7 +42,7 @@ describe ActionController::Flash::FlashHash, "backport" do
       let(:value) { session["flash"] }
 
       it "is the expected flash" do
-        expect(flash).to eq("greeting" => "Hello")
+        expect(flash.to_hash).to eq("greeting" => "Hello")
       end
     end
   end

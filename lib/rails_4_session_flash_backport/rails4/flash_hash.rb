@@ -1,16 +1,9 @@
-# encoding: utf-8
 require 'active_support/core_ext/hash/except'
 require 'action_dispatch'
 require 'action_dispatch/middleware/flash'
 
-# Backport Rails 4 style storing the flash as basic ruby types to Rails 3
+# Backport discarding before session persist to rails 4
 module ActionDispatch
-  class Request < Rack::Request
-    def flash
-      @env[Flash::KEY] ||= Flash::FlashHash.from_session_value(session["flash"])
-    end
-  end
-
   class Flash
     class FlashHash
       def self.from_session_value(value)
@@ -37,39 +30,9 @@ module ActionDispatch
       end
 
       def to_session_value
-        flashes_to_keep = @flashes.except(*@used)
+        flashes_to_keep = @flashes.except(*@discard)
         return nil if flashes_to_keep.empty?
         {'flashes' => flashes_to_keep}
-      end
-
-      def initialize(flashes = {}, discard = []) #:nodoc:
-        @used    = Set.new(discard)
-        @closed  = false
-        @flashes = flashes
-        @now     = nil
-      end
-
-    end
-
-    def call(env)
-      @app.call(env)
-    ensure
-      session    = env['rack.session'] || {}
-      flash_hash = env[KEY]
-
-      if flash_hash
-        if !flash_hash.empty? || session.key?('flash')
-          session["flash"] = flash_hash.to_session_value
-          new_hash = flash_hash.dup
-        else
-          new_hash = flash_hash
-        end
-
-        env[KEY] = new_hash
-      end
-
-      if session.key?('flash') && session['flash'].nil?
-        session.delete('flash')
       end
     end
   end
@@ -85,3 +48,4 @@ module ActionController
     end
   end
 end
+

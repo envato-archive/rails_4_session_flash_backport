@@ -6,8 +6,8 @@ require 'rails_4_session_flash_backport/version'
 Gem::Specification.new do |gem|
   gem.name          = "rails_4_session_flash_backport"
   gem.version       = Rails4SessionFlashBackport::VERSION
-  gem.authors       = ["Lucas Parry"]
-  gem.email         = ["lparry@gmail.com"]
+  gem.authors       = ["Lucas Parry", "Samuel Cochran"]
+  gem.email         = ["lparry@gmail.com", "sj26@sj26.com"]
   gem.description   = %q{Store flash in the session in Rails 4 style on Rails 2/3}
   gem.summary       = %q{Backport of the way Rails 4 stores flash messages in the session to Rails 2 & 3, so you can safely take a session betweens Rails versions without things exploding.}
   gem.homepage      = "https://github.com/envato/rails_4_session_flash_backport"
@@ -17,7 +17,7 @@ Gem::Specification.new do |gem|
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.require_paths = ["lib"]
 
-  gem.add_runtime_dependency 'rails', '< 4.0.0'
+  gem.add_runtime_dependency 'rails', '>= 2.0', '< 4.3'
 
   gem.add_development_dependency 'rake'
   gem.add_development_dependency 'rspec'
