@@ -9,14 +9,15 @@ good ol' `ActionDispatch::Session::SessionRestoreError` making life difficult.
 This gem was created because we wanted to be able to keep our users Rails 2
 sessions working on Rails 3, and we figured as long as we're going to be doing
 crazy stuff we might as well go and use the far more sensible practice from
-Rails 4 of storing the flash as basic ruby types.
+Rails 4 of storing the flash as basic ruby types and sweeping the flash before
+persisting into the session.
 
 For more details of the how and why, check out our blog post 
 [Happily upgrading Ruby on Rails at production scale](http://webuild.envato.com/blog/upgrading-ruby-on-rails-at-production-scale/)
 
 When using this gem on a Rails 2 or 3 app:
 
- - Flash messages are stored as basic objects in the Rails 4 style.
+ - Flash messages are stored as basic objects in the Rails 4 style, pre-swept.
  - Flash messages in the Rails 2 format can be successfully decoded.
  - Flash messages in the Rails 3 format can be successfully decoded.
  - Flash messages in the Rails 4 format can be successfully decoded.
@@ -33,8 +34,9 @@ Rails 3 servers concurrently with your Rails 2 cluster to verify everything is
 fine and performance is acceptable without
 having to do the all-in switch.
 
-_Please Note_ this gem is not intended to be loaded in Rails 4. If you're using
-Rails 4, you've already got all of this gem's functionality!
+This gem also now backports functionality for Rails 2, 3 and 4 which backports
+sweeping the flash before persisting it into the session. This means putting
+large objects into `flash.now` shouldn't cause `CookieOverflow` errors.
 
 ## Installation
 
@@ -53,5 +55,5 @@ Or install it yourself as:
 Copyright
 ---------
 
-Copyright (c) 2012 [Envato](http://envato.com), [Lucas Parry](http://github.com/lparry), [chendo](http://github.com/chendo). See LICENSE.txt for further details.
+Copyright (c) 2012 [Envato](http://envato.com), [Lucas Parry](http://github.com/lparry), [chendo](http://github.com/chendo), [sj26](http://github.com/sj26). See LICENSE.txt for further details.
 
