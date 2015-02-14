@@ -12,7 +12,9 @@ module ActionDispatch
   end
 
   class Flash
-    class FlashHash
+    KEY = 'action_dispatch.request.flash_hash'.freeze
+
+    class FlashHash < Hash
       def self.from_session_value(value)
         flashes = discard = nil
 
@@ -21,8 +23,7 @@ module ActionDispatch
           flashes = Hash.new.update(value)
           discard = value.instance_variable_get(:@used).select{|a,b| b}.keys
         when ::ActionDispatch::Flash::FlashHash # Rails 3.1, 3.2
-          flashes = value.instance_variable_get(:@flashes)
-          discard = value.instance_variable_get(:@used)
+          flashes = value.tap(&:sweep).to_hash
         when Hash # Rails 4.0, we backported to 2.3 too
           flashes = value['flashes']
           discard = value['discard']
@@ -33,22 +34,25 @@ module ActionDispatch
           flashes.except!(*discard)
         end
 
-        new(flashes, flashes.keys)
+        new_from_session(flashes)
       end
 
       def to_session_value
-        flashes_to_keep = @flashes.except(*@used)
+        flashes_to_keep = except(*@used)
         return nil if flashes_to_keep.empty?
         {'flashes' => flashes_to_keep}
       end
 
-      def initialize(flashes = {}, discard = []) #:nodoc:
-        @used    = Set.new(discard)
-        @closed  = false
-        @flashes = flashes
-        @now     = nil
-      end
+      private
 
+      def self.new_from_session(flashes)
+        new.tap do |flash|
+          flashes.each do |key, value|
+            flash[key] = value
+            flash.discard key
+          end
+        end
+      end
     end
 
     def call(env)
