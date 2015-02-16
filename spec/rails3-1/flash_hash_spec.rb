@@ -1,6 +1,6 @@
 require 'base64'
 
-require 'rails_4_session_flash_backport/rails4/flash_hash'
+require 'rails_4_session_flash_backport/rails3-1/flash_hash'
 
 describe ActionDispatch::Flash::FlashHash, "backport" do
   context "#from_session_value" do
