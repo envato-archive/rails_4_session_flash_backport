@@ -13,9 +13,9 @@ Rails 4 of storing the flash as basic ruby types and sweeping the flash before
 persisting into the session.
 
 For more details of the how and why, check out our blog post [Happily upgrading
-Ruby on Rails at production scale][blog-post]
+Ruby on Rails at production scale][blog-post].
 
-    [blog-post]: http://webuild.envato.com/blog/upgrading-ruby-on-rails-at-production-scale/
+[blog-post]: http://webuild.envato.com/blog/upgrading-ruby-on-rails-at-production-scale/
 
 When using this gem on a Rails 2.3, 3.1+ or 4 app:
 
@@ -43,7 +43,7 @@ Rails 3.0 was a weird half-way house between 2.x and 3.1. The 3.0 to 3.1
 upgrade gave many of us an [Argument Error (dump format error)
 problem][argumenterror-so].
 
-    [argumenterror-so]: http://stackoverflow.com/questions/9120501/what-causes-the-argumenterror-dump-format-error
+[argumenterror-so]: http://stackoverflow.com/questions/9120501/what-causes-the-argumenterror-dump-format-error
 
 Consequently rails 3.0 with this gem can decode a rails 2.3 flash and a rails
 3.0 flash but not a rails 3.1+ or 4.x flash.
