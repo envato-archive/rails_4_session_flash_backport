@@ -1,7 +1,7 @@
 PATH
   remote: ..
   specs:
-    rails_4_session_flash_backport (0.1.0)
+    rails_4_session_flash_backport (0.2.0)
       rails (>= 2.0, < 4.3)
 
 GEM
