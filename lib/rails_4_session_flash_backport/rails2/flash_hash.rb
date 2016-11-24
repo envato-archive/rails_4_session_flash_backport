@@ -31,7 +31,14 @@ module ActionController #:nodoc:
 
       def to_session_value
         return nil if empty?
-        discard = @used.select { |key, used| used }.keys
+        with_values = @used.select { |key, used| used }
+
+        if Gem::Version.new(RUBY_VERSION) <= Gem::Version.new('1.8.7') ||
+           Gem::Version.new(RUBY_VERSION) >= Gem::Version.new('2.0.0')
+          with_values = with_values.to_h
+        end
+
+        discard = with_values.keys
         {'flashes' => Hash[to_a].except(*discard)}
       end
 
