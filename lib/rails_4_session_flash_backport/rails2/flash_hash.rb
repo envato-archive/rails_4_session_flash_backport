@@ -31,8 +31,16 @@ module ActionController #:nodoc:
 
       def to_session_value
         return nil if empty?
-        discard = @used.select { |key, used| used }.keys
+        discard = hashify(@used.select { |_, used| used }).keys
         {'flashes' => Hash[to_a].except(*discard)}
+      end
+
+      def hashify(selected)
+        if selected.respond_to?(:to_h)
+          selected.to_h
+        else
+          selected
+        end
       end
 
       def store(session, key = "flash")
