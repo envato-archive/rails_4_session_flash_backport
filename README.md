@@ -80,3 +80,16 @@ Or install it yourself as:
 
 Copyright (c) 2012 [Envato](http://envato.com), [Lucas Parry](http://github.com/lparry), [chendo](http://github.com/chendo), [sj26](http://github.com/sj26). See LICENSE.txt for further details.
 
+
+## About
+
+This project is maintained by the [Envato engineering team][webuild] and funded by [Envato][envato]. 
+
+[<img src="http://opensource.envato.com/images/envato-oss-readme-logo.png" alt="Envato logo">][envato]
+
+Encouraging the use and creation of open source software is one of the ways we serve our community. See [our other projects][oss] or [come work with us][careers] where you'll find an incredibly diverse, intelligent and capable group of people who help make our company succeed and make our workplace fun, friendly and happy.
+
+  [webuild]: http://webuild.envato.com?utm_source=github
+  [envato]: https://envato.com?utm_source=github
+  [oss]: http://opensource.envato.com//?utm_source=github
+  [careers]: http://careers.envato.com/?utm_source=github
