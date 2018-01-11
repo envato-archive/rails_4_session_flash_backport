@@ -76,6 +76,12 @@ Or install it yourself as:
 
     $ gem install rails_4_session_flash_backport
 
+## Development
+
+If you update the Gem version or any of the Gemfiles, you'll need to update the
+Gemfile.locks, too. You can do this by running `./script/update-lockfiles` and
+checking the results into Git.
+
 ## Copyright
 
 Copyright (c) 2012 [Envato](http://envato.com), [Lucas Parry](http://github.com/lparry), [chendo](http://github.com/chendo), [sj26](http://github.com/sj26). See LICENSE.txt for further details.
