@@ -1,7 +1,7 @@
 PATH
   remote: ..
   specs:
-    rails_4_session_flash_backport (0.2.0)
+    rails_4_session_flash_backport (0.2.1)
       rails (>= 2.0, < 4.3)
 
 GEM
@@ -59,3 +59,6 @@ DEPENDENCIES
   rails_4_session_flash_backport!
   rake
   rspec
+
+BUNDLED WITH
+   1.16.1
