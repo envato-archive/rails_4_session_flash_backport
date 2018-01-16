@@ -1,17 +1,7 @@
 language: ruby
 before_install:
-  - gem install bundler -v 1.13.6
-  - gem pristine bundler
+  - gem install bundler -v 1.16.0
 rvm:
   - 1.9.3
-  #- 2.0.0
-  #- 2.1.5
-  #- 2.2.0
 gemfile:
   - gemfiles/Gemfile.rails-2.3.x
-  #- gemfiles/Gemfile.rails-3.0.x
-  #- gemfiles/Gemfile.rails-3.1.x
-  #- gemfiles/Gemfile.rails-3.2.x
-  #- gemfiles/Gemfile.rails-4.0.x
-  #- gemfiles/Gemfile.rails-4.1.x
-  #- gemfiles/Gemfile.rails-4.2.x
