@@ -1,0 +1,8 @@
+#!/bin/bash
+
+for gemfile in ${PWD}/gemfiles/Gemfile.rails-?.?.x; do
+  echo "Updating ${gemfile}.lock ..."
+  export BUNDLE_GEMFILE="${gemfile}"
+  bundle install --no-deployment
+done
+
