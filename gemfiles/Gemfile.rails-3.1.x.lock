@@ -1,7 +1,7 @@
 PATH
   remote: ..
   specs:
-    rails_4_session_flash_backport (0.2.0)
+    rails_4_session_flash_backport (0.2.1)
       rails (>= 2.0, < 4.3)
 
 GEM
@@ -42,7 +42,7 @@ GEM
     erubis (2.7.0)
     hike (1.2.3)
     i18n (0.7.0)
-    json (1.8.2)
+    json (1.8.6)
     mail (2.4.4)
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
@@ -105,7 +105,7 @@ GEM
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
-    tzinfo (0.3.43)
+    tzinfo (0.3.53)
 
 PLATFORMS
   ruby
@@ -116,3 +116,6 @@ DEPENDENCIES
   rails_4_session_flash_backport!
   rake
   rspec
+
+BUNDLED WITH
+   1.16.1
