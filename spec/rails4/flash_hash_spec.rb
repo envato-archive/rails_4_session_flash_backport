@@ -66,7 +66,7 @@ describe ActionDispatch::Flash::FlashHash, "backport" do
     end
 
     it "dumps to basic objects like rails 4" do
-      expect(flash.to_session_value).to eq("flashes" => {"greeting" => "Hello"})
+      expect(flash.to_session_value).to eq("discard" => ["farewell"], "flashes" => {"greeting" => "Hello"})
     end
   end
 end
